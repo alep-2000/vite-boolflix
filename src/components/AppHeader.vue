@@ -13,7 +13,7 @@ export default {
 <template>
     <header>
         <input class="form-control-lg me-2" type="text" placeholder="Inserisci il nome di un film" v-model="store.name">
-        <button class="btn btn-md btn-primary" @click="$emit('search')">Cerca</button>
+        <button class="btn btn-md btn-primary" @click="$emit('search', 'seriess')">Cerca</button>
     </header>
 </template>
 

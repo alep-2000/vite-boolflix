@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    searchfilms() {
+    searchFilms() {
       let myUrl = store.apiUrl
 
       if (store.name !== '') {
@@ -24,6 +24,19 @@ export default {
 
       axios.get(myUrl).then((results) => {
         store.films = results.data.results
+        console.log(results.data.results)
+      })
+    },
+    searchSeries() {
+      let myUrlSeries = store.apiUrlSeries;
+
+      if (store.name !== '') {
+        myUrlSeries += `&query= ${store.name}`
+      }
+
+      axios.get(myUrlSeries).then((results) => {
+        store.series = results.data.results
+        console.log(results.data.results)
       })
     }
   }
@@ -33,7 +46,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader @search="searchfilms" />
+    <AppHeader @search="searchFilms" @seriess="searchSeries" />
     <AppMain />
   </div>
 </template>
