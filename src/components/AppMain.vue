@@ -1,7 +1,14 @@
 <script>
+import { store } from '../components/data/store'
 import AppCard from '../components/AppCard.vue';
 
+
 export default {
+    data() {
+        return {
+            store
+        }
+    },
     components: {
         AppCard
     }
@@ -9,9 +16,8 @@ export default {
 </script>
 
 <template>
-    <div>
-        AppMain
-        <AppCard />
+    <div v-for="(film, index) in store.films" :key="index">
+        <AppCard :myfilms="film" />
     </div>
 </template>
 

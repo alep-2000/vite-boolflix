@@ -1,19 +1,30 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import AppCard from './components/AppCard.vue';
 import axios from 'axios';
 import { store } from './components/data/store'
 
 export default {
   components: {
     AppHeader,
-    AppMain,
-    AppCard
+    AppMain
   },
   data() {
     return {
       store
+    }
+  },
+  methods: {
+    searchfilms() {
+      let myUrl = store.apiUrl
+
+      if (store.name !== '') {
+        myUrl += `&query=${store.name}`
+      }
+
+      axios.get(myUrl).then((results) => {
+        store.films = results.data.results
+      })
     }
   }
 
@@ -22,7 +33,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader @search="searchfilms" />
     <AppMain />
   </div>
 </template>

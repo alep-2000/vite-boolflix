@@ -1,12 +1,24 @@
 <script>
-export default {
+import { store } from './data/store';
 
+export default {
+    data() {
+        return {
+            store
+        }
+    },
+    props: {
+        myfilms: Object
+    }
 }
 </script>
 
 <template>
     <div>
-        AppCard
+        {{ myfilms.title }}
+        {{ myfilms.original_title }}
+        {{ myfilms.original_language }}
+        {{ myfilms.vote_average }}
     </div>
 </template>
 
