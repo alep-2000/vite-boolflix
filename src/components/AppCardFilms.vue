@@ -10,7 +10,7 @@ export default {
         }
     },
     props: {
-        myfilms: Object,
+        myfilms: Object
     }
 }
 </script>
@@ -19,20 +19,31 @@ export default {
     <div class="total-kard">
         <div class="flip">
             <div class="front">
-                <img class="size" :src="`https://image.tmdb.org/t/p/w342${myfilms.poster_path}`" alt="">
+                <img class="size" :src="`https://image.tmdb.org/t/p/w342${myfilms.poster_path}`" :alt="myfilms.title">
             </div>
             <div class="back">
                 <h1> Titolo: {{ myfilms.title }}</h1>
                 <h2> Titolo originale: {{ myfilms.original_title }}</h2>
                 <div>
                     <img class="img-flag"
-                        :src="`../../node_modules/country-flag-icons/3x2/${myfilms.original_language.toUpperCase()}.svg`" />
+                        :src="`../../node_modules/country-flag-icons/3x2/${myfilms.original_language.toUpperCase()}.svg`"
+                        :alt="myfilms.original_language.toUpperCase()" />
                 </div>
-                <!-- <div>
-                    <i class=" fa-regular fa-star"></i>
-                </div> -->
-                {{ myfilms.vote_average }}
+                <h4>
+                    <div class="d-flex justify-content-center mt-3">
+                        <span>Voto:</span>
+                        <!-- <div class="d-flex" v-for="(  star, index  ) in  vote(star)" :key="index">
+                            <i class="fa-solid fa-star"></i>
+                        </div> -->
+                        <!-- <div class="d-flex" v-for="(  star, index  ) in   Math.floor(5 - myfilms.vote_average / 2)  "
+                            :key="index">
+                            <i class=" fa-regular fa-star"></i>
+                        </div> -->
+                    </div>
+                </h4>
+                <p>{{ myfilms.overview }}</p>
             </div>
+            <!-- {{ myfilms.vote_average }} -->
         </div>
     </div>
 </template>
@@ -46,9 +57,8 @@ export default {
     height: 500px;
     perspective: 1000px;
 
-    .total-kard:hover .flip {
+    &:hover .flip {
         transform: rotateY(180deg);
-        background-color: red
     }
 
     .flip {
@@ -67,10 +77,11 @@ export default {
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            background-color: #bbb;
 
             .size {
-                width: 350px;
-                height: 500px;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
             }
         }
@@ -84,6 +95,11 @@ export default {
             background-color: black;
             color: white;
             transform: rotateY(180deg);
+
+            p {
+                font-size: 12px;
+                text-align: center;
+            }
         }
     }
 
