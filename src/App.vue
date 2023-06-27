@@ -32,7 +32,11 @@ export default {
       axios.get(myUrlSeries).then((results) => {
         store.series = results.data.results
       })
-    }
+    },
+    // vote() {
+    //   let calculate_vote = myfilms.vote_average / 2
+    //   return calculate_vote
+    // }
   }
 
 }
