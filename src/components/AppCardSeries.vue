@@ -21,7 +21,11 @@ export default {
             {{ myseries.name }}
             {{ myseries.original_name }}
             <div>
-                <img :src="`../../node_modules/country-flag-icons/3x2/${myseries.original_language.toUpperCase()}.svg`" />
+                <img :src="`https://image.tmdb.org/t/p/w342${myseries.poster_path}`" alt="">
+            </div>
+            <div>
+                <img class="img-flag"
+                    :src="`../../node_modules/country-flag-icons/3x2/${myseries.original_language.toUpperCase()}.svg`" />
             </div>
             {{ myseries.vote_average }}
         </div>
@@ -29,7 +33,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-img {
-    width: 30px;
+@use '../style/partials/variables.scss' as *;
+
+
+.img-flag {
+    width: $width;
 }
 </style>
