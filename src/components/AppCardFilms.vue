@@ -26,6 +26,9 @@ export default {
             <img class="img-flag"
                 :src="`../../node_modules/country-flag-icons/3x2/${myfilms.original_language.toUpperCase()}.svg`" />
         </div>
+        <div>
+            <i class=" fa-regular fa-star"></i>
+        </div>
         {{ myfilms.vote_average }}
     </div>
 </template>
