@@ -23,14 +23,17 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../style/partials/variables.scss' as *;
+@use '../style/mixins.scss' as *;
+
+
 header {
-    width: 100%;
-    height: 100px;
-    background-color: #54595e;
+    @include size;
+    background-color: $back_header;
 
     strong {
         font-size: 30px;
-        color: #cb2918;
+        color: $color;
     }
 }
 </style>

@@ -29,17 +29,18 @@ export default {
     <div class="total-kard">
         <div class="flip">
             <div class="front">
-                <img class="size" :src="`https://image.tmdb.org/t/p/w342${myfilms.poster_path}`" :alt="myfilms.title">
+                <img class="size" :src="`https://image.tmdb.org/t/p/w352${myfilms.poster_path}`" :alt="myfilms.title">
+
             </div>
             <div class="back">
-                <h1> Titolo: {{ myfilms.title }}</h1>
-                <h2> Titolo originale: {{ myfilms.original_title }}</h2>
+                <h2> Titolo: {{ myfilms.title }}</h2>
+                <h3> Titolo originale: {{ myfilms.original_title }}</h3>
                 <div>
                     <img class="img-flag"
                         :src="`../../node_modules/country-flag-icons/3x2/${myfilms.original_language.toUpperCase()}.svg`"
                         :alt="myfilms.original_language.toUpperCase()" />
                 </div>
-                <h4>
+                <h5>
                     <div class="d-flex justify-content-center mt-3">
                         <span>Voto:</span>
                         <div class="d-flex" v-for="(  stars, index  ) in  vote()" :key="index">
@@ -49,7 +50,7 @@ export default {
                             <i class="fa-regular fa-star"></i>
                         </div>
                     </div>
-                </h4>
+                </h5>
                 <p>{{ myfilms.overview }}</p>
             </div>
         </div>
@@ -58,70 +59,45 @@ export default {
 
 <style lang="scss" scoped>
 @use '../style/partials/variables.scss' as *;
+@use '../style/mixins.scss' as *;
+
 
 .total-kard {
-    background-color: transparent;
-    width: 350px;
-    height: 500px;
-    perspective: 1000px;
-    cursor: pointer;
+    @include total;
 
     &:hover .flip {
-        transform: rotateY(180deg);
+        transform: $rotate;
     }
 
     .flip {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-
-
+        @include flip;
 
         .front {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            background-image: url('../assets/img/back-image.jpg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            box-shadow: 5px 5px 3px #bbb;
+            @include front;
+
 
             .size {
-                width: 100%;
-                height: 100%;
+                @include size;
                 object-fit: cover;
             }
         }
 
         .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            background-color: black;
-            color: white;
-            transform: rotateY(180deg);
+            @include back;
+
+            .img-flag {
+                width: $width;
+            }
 
             .fa-solid {
-                color: gold;
+                color: $color-star;
             }
 
             p {
-                font-size: 10px;
-                text-align: center;
+                @include paragraph
             }
         }
     }
 
-}
-
-.img-flag {
-    width: $width;
 }
 </style>

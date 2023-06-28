@@ -1,0 +1,49 @@
+@mixin total {
+    background-color: transparent;
+    width: 350px;
+    height: 500px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+@mixin flip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+@mixin front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-image: url('../assets/img/movie.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 10px 10px 3px #414141;
+}
+
+@mixin size {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+@mixin paragraph {
+    font-size: 10px;
+    text-align: center;
+}
