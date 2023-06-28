@@ -1,18 +1,22 @@
 <script>
+// IMPORT COMPONENTS
 import { store } from './data/store';
 import { hasFlag } from 'country-flag-icons';
 
 export default {
     data() {
         return {
+            // USABLE STORE AND HAS-FLAG
             store,
             hasFlag
         }
     },
+    // PROPS
     props: {
         myseries: Object
     },
     methods: {
+        // FUNCTION VOTE
         vote() {
             let full_star = Math.ceil(this.myseries.vote_average / 2)
             return full_star
@@ -29,7 +33,8 @@ export default {
     <div class="total-kard">
         <div class="flip">
             <div class="front">
-                <img class="size" :src="`https://image.tmdb.org/t/p/w342${myseries.poster_path}`" :alt="myseries.name">
+                <!-- COVER IMAGE SERIES -->
+                <img class="size" :src="`https://image.tmdb.org/t/p/w500${myseries.poster_path}`" :alt="myseries.name">
             </div>
             <div class="back">
                 <h2>Titolo: {{ myseries.name }}</h2>
@@ -42,6 +47,7 @@ export default {
                 <h5>
                     <div class="d-flex justify-content-center mt-3">
                         <span>Voto:</span>
+                        <!-- CICLE V-FOR -->
                         <div class="d-flex" v-for="(  stars, index  ) in  vote()" :key="index">
                             <i class="fa-solid fa-star"></i>
                         </div>
@@ -60,7 +66,7 @@ export default {
 @use '../style/partials/variables.scss' as *;
 @use '../style/mixins.scss' as *;
 
-
+// STYLE CARD SERIES
 .total-kard {
     @include total;
 

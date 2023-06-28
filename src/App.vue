@@ -1,21 +1,25 @@
 <script>
+// IMPORT COMPONENTS
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
 import { store } from './components/data/store'
 
 export default {
+  // USABLE COMPONENTS 
   components: {
     AppHeader,
     AppMain
   },
   data() {
     return {
+      // USABLE STORE
       store
     }
   },
   methods: {
-    searchFilms() {
+    // SEARCH FUNCTION
+    searchContent() {
       let myUrl = store.apiUrl
       let myUrlSeries = store.apiUrlSeries;
 
@@ -25,6 +29,7 @@ export default {
         myUrlSeries += `&query= ${store.name}`
       }
 
+      // API CALLS
       axios.get(myUrl).then((results) => {
         store.films = results.data.results
         console.log(results.data.results)
@@ -42,7 +47,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader @search="searchFilms" />
+    <AppHeader @search="searchContent" />
     <AppMain />
   </div>
 </template>

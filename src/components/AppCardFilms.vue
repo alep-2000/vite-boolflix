@@ -1,18 +1,22 @@
 <script>
+// IMPORT COMPONENTS
 import { store } from './data/store';
 import { hasFlag } from 'country-flag-icons';
 
 export default {
     data() {
         return {
+            // USABLE STORE AND HAS-FLAG
             store,
             hasFlag
         }
     },
+    // PROPS
     props: {
         myfilms: Object
     },
     methods: {
+        // VOTE FUNCTION
         vote() {
             let full_star = Math.ceil(this.myfilms.vote_average / 2)
             return full_star
@@ -26,13 +30,15 @@ export default {
 </script>
 
 <template>
+    <!-- CARD FILMS -->
     <div class="total-kard">
         <div class="flip">
             <div class="front">
-                <img class="size" :src="`https://image.tmdb.org/t/p/w352${myfilms.poster_path}`" :alt="myfilms.title">
-
+                <!-- COVER IMAGE FILMS -->
+                <img class="size" :src="`https://image.tmdb.org/t/p/w500${myfilms.poster_path}`" :alt="myfilms.title">
             </div>
             <div class="back">
+                <!-- FILM INFORMATION -->
                 <h2> Titolo: {{ myfilms.title }}</h2>
                 <h3> Titolo originale: {{ myfilms.original_title }}</h3>
                 <div>
@@ -43,6 +49,7 @@ export default {
                 <h5>
                     <div class="d-flex justify-content-center mt-3">
                         <span>Voto:</span>
+                        <!-- CICLE FOR -->
                         <div class="d-flex" v-for="(  stars, index  ) in  vote()" :key="index">
                             <i class="fa-solid fa-star"></i>
                         </div>
@@ -55,13 +62,14 @@ export default {
             </div>
         </div>
     </div>
+    <!-- END CARD FILMS -->
 </template>
 
 <style lang="scss" scoped>
 @use '../style/partials/variables.scss' as *;
 @use '../style/mixins.scss' as *;
 
-
+// STYLE CARD FILMS
 .total-kard {
     @include total;
 
