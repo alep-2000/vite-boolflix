@@ -85,7 +85,10 @@ export default {
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            background-color: #bbb;
+            background-image: url('../assets/img/back-image.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            box-shadow: 5px 5px 3px #bbb;
 
             .size {
                 width: 100%;
