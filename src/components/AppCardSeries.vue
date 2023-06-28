@@ -11,6 +11,16 @@ export default {
     },
     props: {
         myseries: Object
+    },
+    methods: {
+        vote() {
+            let full_star = Math.ceil(this.myseries.vote_average / 2)
+            return full_star
+        },
+        hallow_vote() {
+            let hallow_star = Math.floor(5 - this.myseries.vote_average / 2)
+            return hallow_star
+        }
     }
 }
 </script>
@@ -29,8 +39,18 @@ export default {
                         :src="`../../node_modules/country-flag-icons/3x2/${myseries.original_language.toUpperCase()}.svg`"
                         :alt="myseries.original_language.toUpperCase()" />
                 </div>
+                <h4>
+                    <div class="d-flex justify-content-center mt-3">
+                        <span>Voto:</span>
+                        <div class="d-flex" v-for="(  stars, index  ) in  vote()" :key="index">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="d-flex" v-for="(  stars, index  ) in hallow_vote()" :key="index">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </h4>
                 <p>{{ myseries.overview }}</p>
-                <!-- {{ myseries.vote_average }} -->
             </div>
         </div>
     </div>
@@ -84,8 +104,12 @@ export default {
             color: white;
             transform: rotateY(180deg);
 
+            .fa-solid {
+                color: gold;
+            }
+
             p {
-                font-size: 12px;
+                font-size: 10px;
                 text-align: center;
             }
         }

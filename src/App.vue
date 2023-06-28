@@ -9,9 +9,6 @@ export default {
     AppHeader,
     AppMain
   },
-  props: {
-    myfilms: Object,
-  },
   data() {
     return {
       store
@@ -30,15 +27,13 @@ export default {
 
       axios.get(myUrl).then((results) => {
         store.films = results.data.results
+        console.log(results.data.results)
       })
 
       axios.get(myUrlSeries).then((results) => {
         store.series = results.data.results
+        console.log(results.data.results)
       })
-    },
-    vote() {
-      let calculate_vote = Math.cell(myfilms.vote_average / 2)
-      return calculate_vote
     }
   }
 
