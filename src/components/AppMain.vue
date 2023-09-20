@@ -24,12 +24,18 @@ export default {
     <!-- MAIN -->
     <div class="container">
         <div class="row">
+            <div class="col-12">
+                <h4 class="color-cb fw-bold mt-3">FILMS</h4>
+            </div>
             <!-- CICLI FOR -->
             <div class="col-6 col-md-5 col-lg-4 my-3" v-for="(film, index) in store.films" :key="index">
                 <AppCardFilms :myfilms="film" />
             </div>
         </div>
         <div class="row">
+            <div class="col-12">
+                <h4 class="color-cb fw-bold mt-5">SERIES</h4>
+            </div>
             <div class="col-6 col-md-5 col-lg-4 my-3" v-for="(serie, index) in store.series" :key="index">
                 <AppCardSeries :myseries="serie" />
             </div>
@@ -38,4 +44,8 @@ export default {
     <!-- END MAIN -->
 </template>
 
-<style></style>
+<style lang="scss">
+.color-cb {
+    color: #CB2918;
+}
+</style>
