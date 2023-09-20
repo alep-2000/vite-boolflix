@@ -14,7 +14,9 @@ export default {
   data() {
     return {
       // USABLE STORE
-      store
+      store,
+      searchedMovies: [],
+      searchedSeries: [],
     }
   },
   methods: {
@@ -40,9 +42,11 @@ export default {
         console.log(results.data.results)
       })
     }
-  }
+
+  },
 
 }
+
 </script>
 
 <template>
